@@ -1,0 +1,1 @@
+cd ../out/build/VisualStudio2019; ./Main.exe

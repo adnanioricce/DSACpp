@@ -1,0 +1,15 @@
+[submodule "libs/test"]
+	path = libs/test
+	url = https://github.com/boostorg/test.git
+[submodule "libs/filesystem"]
+	path = libs/filesystem
+	url = https://github.com/boostorg/filesystem.git
+[submodule "libs/system"]
+	path = libs/system
+	url = https://github.com/boostorg/system.git
+[submodule "libs/googletest"]
+	path = libs/googletest
+	url = https://github.com/google/googletest.git
+[submodule "libs/doctest"]
+	path = libs/doctest
+	url = https://github.com/doctest/doctest.git
