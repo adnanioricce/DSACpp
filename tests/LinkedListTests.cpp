@@ -17,7 +17,7 @@ TEST_SUITE("Linked list test") {
     TEST_CASE("Test insertion and search of linked list") {        
         auto list = createList();
         auto item = list->Search(10);
-        CHECK(10 == item->Item);
+        CHECK(10 == item.value());
     }
     TEST_CASE("Test list traverse") {        
         auto list = createList();

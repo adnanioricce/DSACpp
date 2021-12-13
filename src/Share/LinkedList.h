@@ -97,8 +97,11 @@ public:
         length++;
     }
 
-    Node<T>* Search(T item){        
-        return Search(tail,item);
+    std::optional<T> Search(T item){        
+        auto node = Search(tail, item);
+        if (node == NULL)
+            return std::nullopt;
+        return std::make_optional(item);
     }
     void Delete(T item){
         Node<T>* node = Search(item);
