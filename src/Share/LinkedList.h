@@ -6,15 +6,15 @@ using namespace std;
 template<typename T>
 struct Node {
     T Item;
-    Node *Next;
+    shared_ptr<Node> Next;
 };
 template<typename T>
 class Iterator {
 private:
-    Node<T>* _tail;    
-    Node<T>* _current;
+    shared_ptr<Node<T>> _tail;
+    shared_ptr<Node<T>> _current;
 public:
-    Iterator(Node<T>* tail) {
+    Iterator(shared_ptr<Node<T>> tail) {
         _tail = tail;
         _current = tail;
     }
@@ -33,118 +33,229 @@ public:
         _current = _current->Next;
         return true;
     }
+    void Swap(Iterator<T>& rhs) {
+        if (rhs._current == nullptr)
+            return;
+        shared_ptr<Node<T>> rhsNode = rhs._current;        
+        auto temp = rhsNode->Item;
+        rhsNode->Item = _current->Item;
+        _current->Item = temp;
+    }
 };
 template<typename T>
 class LinkedList
 {
 private:   
     int length;     
-    Node<T> *tail;    
+    shared_ptr<Node<T>> tail;
+    shared_ptr<Node<T>> head;
 
-    Node<T>* Search(Node<T> *l,T x) {
-        if (l == NULL)
-            return NULL;
+    std::optional<shared_ptr<Node<T>>> Search(shared_ptr<Node<T>> l,T x) {
+        if (l == nullptr)
+            return std::nullopt;
         if (l->Item == x) {
-            return l;
+            return std::make_optional(l);
         }        
         return Search(l->Next, x);        
     }
-    void Insert(Node<T> **l, T x) {
-        Node<T>* p;
-        p = (Node<T>*)malloc(sizeof(Node<T>));
+    
+    void AppendAtStart(shared_ptr<Node<T>>* l, T x) {
+        shared_ptr<Node<T>> p = make_shared<Node<T>>();
+        //p = (Node<T>*)malloc(sizeof(Node<T>));        
         p->Item = x;
         p->Next = *l;
         *l = p;
     }
-    Node<T>* ItemAhead(Node<T> *l,Node<T> *x) {
-        if (l == NULL || l->Next == NULL)
-            return NULL;
+    void AppendAtEnd(shared_ptr<Node<T>>* head,shared_ptr<Node<T>>* tail, T x) {
+        Node<T> pointer = new Node<T>();
+        pointer->Item = x;
+        pointer->Next = nullptr;
+        if (*head == nullptr) {
+            *head = pointer;
+        }
+        else {
+            (*tail)->Next = pointer;
+        }
+        (*tail) = pointer;
+    }
+    void AppendAtEnd(const T& item)
+    {
+        shared_ptr<Node<T>> pointer;;
+        pointer->Item = item;
+        pointer->Next = nullptr;
+        if (head == nullptr) {
+            head = pointer;
+        }
+        else {
+            tail->Next = pointer;
+        }
+        tail = pointer;
+    }
+    shared_ptr<Node<T>> ItemAhead(shared_ptr<Node<T>> l,shared_ptr<Node<T>> x) {
+        if (l == nullptr || l->Next == nullptr)
+            return nullptr;
 
         if (l->Next == x) {
             return l;
         }
         return ItemAhead(l->Next, x);
     }
-    void DeleteNode(Node<T> **l,Node<T> **x) {
-        Node<T>* p;
-        Node<T>* pred;
+    void DeleteNode(shared_ptr<Node<T>> *l,shared_ptr<Node<T>> *x) {
+        shared_ptr<Node<T>> p;
+        shared_ptr<Node<T>> pred;
         p = *l;
         pred = ItemAhead(*l, *x);
-        if (pred == NULL) {
+        if (pred == nullptr) {
             *l = p->Next;
         }
         else {
             pred->Next = (*x)->Next;
         }
-        free(*x);
+        (*x).reset();
+        //free(*x);
     }    
 public:
     LinkedList(){        
-        tail = NULL;        
+        tail = nullptr;   
+        head = nullptr;
         length = 0;
     }
-    ~LinkedList(){                
-        Node<T>* p;
-        while (tail != NULL)
-        {
-            p = tail;
-            tail = tail->Next;
-            delete p;
-        }        
+    LinkedList(initializer_list<T> initList) {
+        tail = nullptr;
+        head = nullptr;
+        length = 0;
+        for (auto it = initList.begin(); it != initList.end(); ++it) {
+            InsertAtStart(*it);
+        }
+        /*for (int i = 0; i < initialList.size(); ++i) {
+            
+        }*/
     }
-    void Insert(T item){
-        Insert(&tail,item);
+    ~LinkedList(){
+    }
+    void InsertAtStart(T item){
+        AppendAtStart(&tail, item);
         length++;
     }
-
+    void InsertAtEnd(T item) {
+        AppendAtEnd(item);
+        length++;
+    }        
     std::optional<T> Search(T item){        
-        auto node = Search(tail, item);
-        if (node == NULL)
-            return std::nullopt;
-        return std::make_optional(item);
+        auto node = Search(tail, item);        
+        return item;
     }
-    void Delete(T item){
-        Node<T>* node = Search(item);
+    bool Delete(T item){
+        auto nodeOpt = Search(tail,item);
         
-        if (node == NULL)
-            return;
+        if (!nodeOpt.has_value())
+            return false;
 
+        auto node = nodeOpt.value();
         DeleteNode(&tail, &node);
         length--;
-    }    
+        return true;
+    }
+    void BubbleSortWithRawPointers() {
+
+    }
+    void BubbleSort() {
+        if (tail == nullptr)
+            return;
+        shared_ptr<Node<T>> pointer = tail->Next;
+        shared_ptr<Node<T>> first = tail;
+        while (pointer != nullptr)
+        {
+            shared_ptr<Node<T>> p = first;
+            shared_ptr<Node<T>> c = pointer;
+            while (p != nullptr)
+            {
+                if (p->Item > c->Item) {
+                    auto temp = c->Item;
+                    c->Item = p->Item;
+                    p->Item = temp;
+                }
+                p = p->Next;                
+            }
+            pointer = pointer->Next;            
+        }
+    }
     Iterator<T> GetIteratorFromTail() {
         return Iterator<T>(this->tail);
+    }
+    Iterator<T> GetIteratorFromHead() {
+        return Iterator<T>(this->head);
     }
     int Size() {
         return this->length;
     }
 };
-
+template<typename T>
+void Sort(LinkedList<T>& list) {
+    Iterator<T> pointer = list.GetIteratorFromTail();
+    Iterator<T> current = list.GetIteratorFromTail();
+    optional<T> pointerOpt = pointer.GetCurrent();    
+    int index = 0;    
+    int innerIndex = 0;
+    std::array<T, 6> arr;
+    optional<T> next = current.GetCurrent();
+    while (pointerOpt.has_value())
+    {           
+        auto it = list.GetIteratorFromTail();
+        for (size_t i = 0; i < list.Size(); i++)
+        {            
+            arr[i] = it.GetCurrent().value();
+            it.Next();
+        }
+        while (next.has_value())
+        {               
+            if (pointerOpt.value() < next.value()) {                    
+                pointer.Swap(current);
+            }
+            current.Next();
+            next = current.GetCurrent();
+            
+            innerIndex++;
+        }
+        index += pointer.Next();
+        pointerOpt = pointer.GetCurrent();
+        current = list.GetIteratorFromTail();
+        next = current.GetCurrent();
+        //current.Next();
+           
+    }
+}
 template<typename T>
 void Menu(LinkedList<T> list) {
-    std::cout << "i - Insert" << std::endl;
-    std::cout << "s - Search" << std::endl;
-    std::cout << "d - Delete" << std::endl;
-    char opcao;
-    opcao >> std::cin;
-    if (opcao == 'i') {
-        T value;
-        value >> std::cin;
-        list.Inserir(value);
-        return;
-    }
-    if (opcao == 'd') {
-        T value;
-        value >> std::cin;
-        std::cout << "Removed Item: " << list.Delete(value) << std::endl;
-        return;
-    }
-    if (opcao == 's') {
-        T value;
-        value >> std::cin;
-        Node<T>* searchedItem = list.Search(value);
-        std::cout << "Searched Item: " << searchedItem->Item << std::endl;
-        return;
+    bool _continue = true;
+    while (_continue)
+    {
+        std::cout << "i - Insert" << std::endl;
+        std::cout << "b - Search" << std::endl;
+        std::cout << "d - Delete" << std::endl;
+        std::cout << "s - leave" << std::endl;
+        char opcao;
+        opcao >> std::cin;
+        if (opcao == 'i') {
+            T value;
+            value >> std::cin;
+            list.Inserir(value);    
+            std::cout << "Inserted Value:" << value << std::endl;
+        }
+        else if (opcao == 'd') {
+            T value;
+            value >> std::cin;
+            std::cout << "Removed Item: " << list.Delete(value) << std::endl;            
+        }
+        else if (opcao == 'b') {
+            T value;
+            value >> std::cin;
+            Node<T>* searchedItem = list.Search(value);
+            std::cout << "Searched Item: " << searchedItem->Item << std::endl;            
+        }
+        else if (opcao == 's') {
+            _continue = false;
+        }
     }
 }
 #endif

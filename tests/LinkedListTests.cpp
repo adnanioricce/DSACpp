@@ -1,10 +1,12 @@
 #include "doctest.h"
 #include <Share/LinkedList.h>
 #include <memory>
+#include <array>
+#include <string>
 std::unique_ptr<LinkedList<int>> createList() {
     std::unique_ptr<LinkedList<int>> list(new LinkedList<int>());
     for (int i = 0; i < 21; ++i) {
-        list->Insert(i);
+        list->InsertAtStart(i);
     }
     return list;
 }
@@ -45,6 +47,63 @@ TEST_SUITE("Linked list test") {
             CHECK(current.value() == i);
             iterator.Next();
         }
+    }
+    TEST_CASE("Test list sorting") {
+        // Entrada
+        auto testList = std::array<int, 6>(
+            { 7,2,9,6,1,3 }
+        );
+        //Saida esperada
+        auto expectedList = std::array<int, 6>(
+            { 1,2,3,6,7,9 }
+        );        
+        LinkedList<int> list({ 7,2,9,6,1,3 });        
+        list.BubbleSort();
+        auto resultList = std::array<int, 6>();        
+        //Sort(list);
+        auto iterator = list.GetIteratorFromTail();                      
+        for (int i = 0; i < 6; i++)
+        {
+            auto opt = iterator.GetCurrent();
+            if (!opt.has_value())
+                FAIL("sizes don't match");
+            resultList[i] = opt.value();
+            iterator.Next();
+        }
+        for (size_t i = expectedList.size() - 1; i > 0; i--) {            
+            if (resultList[i] != expectedList[i])
+                FAIL("lists don't match, at index " << i << " value expected value is " << expectedList[i] << " received value was " << resultList[i]);
+                        
+        }
+    }
+    TEST_CASE("Test sorting on empty list") {        
+        LinkedList<int> list;
+        list.BubbleSort();
+    }
+    //TEST_CASE("Test sorting with external function") {
+    //    auto expectedList = std::array<int, 6>(
+    //        { 1,2,3,6,7,9 }
+    //    );
+    //    auto resultList = std::array<int, 6>();
+    //    LinkedList<int> list({ 7,2,9,6,1,3 });
+    //    Sort(list);
+    //    auto iterator = list.GetIteratorFromTail();
+    //    for (size_t i = 0; i < 6; i++)
+    //    {
+    //        auto opt = iterator.GetCurrent();
+    //        if (!opt.has_value())
+    //            FAIL("sizes don't match");
+    //        resultList[i] = opt.value();
+    //        iterator.Next();
+    //    }
+    //    for (size_t i = expectedList.size() - 1; i > 0; i--) {
+    //        //auto current = iterator.GetCurrent();
+    //        /*if (!current.has_value()) {
+    //            FAIL("The size of the expected list and the actual list don't match. list failed at " << i);
+    //        }*/
+    //        if (resultList[i] != expectedList[i])
+    //            FAIL("lists don't match, at index " << i << " value expected value is " << expectedList[i] << " received value was " << resultList[i]);
 
-    }        
+    //    }
+    //}
 }

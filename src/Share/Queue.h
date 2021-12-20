@@ -2,6 +2,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 #include <iterator>
+#include <iostream>
+using namespace std;
 template<typename T>
 class Queue
 {
@@ -26,7 +28,7 @@ public:
 		_items = new T[size];
 	}
 	~Queue(){
-		//delete[] _items;
+		free(_items);
 	}
 	void Enqueue(T item){
 		if(_currentIndex == _maxSize){
@@ -51,26 +53,33 @@ public:
 	}
 	
 };
+//TODO:isso vai falhar pra uma struct, trata isso ou não?
 template<typename T>
 void Menu(const Queue<T> &queue) {
-	std::cout << "i - Enqueue" << std::endl;
-	std::cout << "r - Dequeue" << std::endl;
-	std::cout << "s - Size" << std::endl;
+	cout << "i - Enqueue" << endl;
+	cout << "r - Dequeue" << endl;
+	cout << "c - Size" << endl;
+	cout << "s - Stop" << endl;
 	char opcao;
-	opcao >> std::cin;
-	if (opcao == 'i') {
-		T value;
-		value >> std::cin;
-		queue.Enqueue(value);
-		return;
-	}
-	if (opcao == 'r') {
-		std::cout << "Removed Item: " << queue.Dequeue() << std::endl;
-		return;
-	}
-	if (opcao == 's') {
-		std::cout << "Size: " << queue.Size() << std::endl;
-		return;
-	}
+	cin >> opcao;	
+	while (true) {
+		if (opcao == 'i') {		
+			cout << "Insert a item: " << endl;
+			T value;
+			cin >> value;
+			queue.Enqueue(value);
+			cout << "Inserted value: " << value << endl;
+		}
+		if (opcao == 'r') {
+			cout << "Removed Item: " << queue.Dequeue() << endl;			
+		}
+		if (opcao == 'c') {
+			cout << "Size: " << queue.Size() << endl;			
+		}
+		if (opcao == 's') {
+			cout << "Stopping Queue menu ..." << endl;
+			return;
+		}
+	}	
 }
 #endif

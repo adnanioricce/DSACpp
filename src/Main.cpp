@@ -2,6 +2,7 @@
 #include "Share/Queue.h"
 #include "Share/Stack.h"
 #include "Share/LinkedList.h"
+#include "Share/LinkedQueue.h"
 using namespace std;
 void TestQueue() {
 	std::cout << "Testing queue" << std::endl;
@@ -31,24 +32,28 @@ void TestList() {
 	std::cout << "Testing list " << std::endl;
 	LinkedList<int> list;
 	for (int i = 1; i <= 5; ++i) {
-		list.Insert(i);
+		list.InsertAtStart(i);
 	}
 	std::cout << "Searching..." << std::endl;
-	auto node = list.Search(4);
-	auto value = node->Item;
+	auto itemOpt = list.Search(4);	
+	auto value = itemOpt.value();
 	std::cout << "Element searched " << value << std::endl;
-	list.Delete(value);
-	auto isDeleted = list.Search(value);
-	if (!isDeleted) {
-		std::cout << value << " was deleted " << std::endl;
-	}
-	else {
+	;	
+	if (!list.Delete(value)) {
 		std::cout << "Node was not deleted" << std::endl;
 	}
+	else {		
+		std::cout << value << " was deleted " << std::endl;
+	}
+}
+void TestLinkedQueue() {
+	LinkedQueue<int> queue;
+	Menu(queue);
 }
 int main(){
 	TestQueue();
 	TestStack();
 	TestList();
+	TestLinkedQueue();
 	return 0;
 }      

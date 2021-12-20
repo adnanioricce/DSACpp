@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <array>
 #include <iterator>
+#include <iostream>
+using namespace std;
 template<class T>
 class Stack
 {
@@ -12,7 +14,7 @@ public:
 		_items = new T[_maxSize];
 	}
 	~Stack(){
-		delete _items;
+		free(_items);
 	}
 	void Push(T item){		
 		if(_currentIndex == _maxSize){
@@ -48,24 +50,30 @@ private:
 };
 template<typename T>
 void Menu(Stack<T> stack) {
-	std::cout << "i - Push" << std::endl;
-	std::cout << "r - Pop" << std::endl;
-	std::cout << "s - Size" << std::endl;
-	char opcao;
-	opcao >> std::cin;
+  cout << "i - Push" << endl;
+  cout << "r - Pop" << endl;
+  cout << "c - Size" << endl;
+  cout << "s - Stop" << endl;
+  char opcao;
+  cin >> opcao;  
+  while(true){
 	if (opcao == 'i') {
+		cout << "Insert a value " << endl;
 		T value;
-		value >> std::cin;
+		cin >> value;
 		stack.Push(value);
-		return;
+		cout << "Inserted value: " << value << endl;
 	}
 	if (opcao == 'r') {
-		std::cout << "Removed Item: " << stack.Pop() << std::endl;
+		cout << "Removed Item: " << stack.Pop() << endl;
+	}
+	if(opcao == 'c'){
+		cout << "Count number of elements " << stack.Size() << endl;
+	}
+	if (opcao == 's') {		
+		cout << "Stopping stack menu ..." << endl;
 		return;
 	}
-	if (opcao == 's') {
-		std::cout << "Size: " << stack.Size() << std::endl;
-		return;
-	}
+  }
 }
 #endif // !STACK_H
