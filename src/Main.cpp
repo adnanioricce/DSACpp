@@ -32,7 +32,7 @@ void TestList() {
 	std::cout << "Testing list " << std::endl;
 	LinkedList<int> list;
 	for (int i = 1; i <= 5; ++i) {
-		list.InsertAtStart(i);
+		list.Insert(i);
 	}
 	std::cout << "Searching..." << std::endl;
 	auto itemOpt = list.Search(4);	
@@ -53,6 +53,8 @@ void TestLinkedQueue() {
 
 int main(){
 	//ExemploBubbleSort();
+	LinkedList<int> list;
+	Menu(list);
 	/*TestQueue();
 	TestStack();
 	TestList();

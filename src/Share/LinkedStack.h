@@ -19,8 +19,8 @@ public:
 	{		
 	}
 	void Push(T item) {
-		list.InsertAtStart(item);
-		/*AppendAtStart(&head, item);
+		list.Insert(item);
+		/*Prepend(&head, item);
 		count++;*/
 	}
 	std::optional<T> Pop() {
@@ -30,8 +30,8 @@ public:
 		auto previous = head;
 		head = head->Next;
 		free(previous);*/
-		auto tail = list.GetIteratorFromTail();
-		auto dataOpt = tail.GetCurrent();
+		auto head = list.GetHead();
+		auto dataOpt = head.GetCurrent();
 		if(dataOpt.has_value())
 			list.Delete(dataOpt.value());
 		return dataOpt;

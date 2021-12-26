@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.20.4)
 # Definitions
 set(PROJECT_NAME_STR DataStructures)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
-
+set(CMAKE_CXX_STANDARD 17)
 # Project title and define versioning
 project(${PROJECT_NAME_STR})
 # Gather all sources except the main entry point

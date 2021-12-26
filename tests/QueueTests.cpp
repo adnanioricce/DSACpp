@@ -1,4 +1,4 @@
-#include "doctest.h"
+#include "doctest/doctest.h"
 #include <Share/Queue.h>
 
 TEST_CASE("Enqueue and Dequeue tests"){
