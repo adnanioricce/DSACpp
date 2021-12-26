@@ -2,6 +2,7 @@
 #define LINKEDLIST_H
 #include <memory>
 #include <optional>
+#include <iostream>
 using namespace std;
 template<typename T>
 struct Node {
@@ -61,7 +62,7 @@ private:
     
     void AppendAtStart(shared_ptr<Node<T>>* l, T x) {
         shared_ptr<Node<T>> p = make_shared<Node<T>>();
-        //p = (Node<T>*)malloc(sizeof(Node<T>));        
+        //p = (Node<T>*)malloc(sizeof(Node<T>));
         p->Item = x;
         p->Next = *l;
         *l = p;
@@ -100,6 +101,11 @@ private:
         }
         return ItemAhead(l->Next, x);
     }
+    /*
+    * Deletes a given node from the list
+    * @param l: the tail of the list
+    * @param x: the element to be removed from the tail.    
+    */
     void DeleteNode(shared_ptr<Node<T>> *l,shared_ptr<Node<T>> *x) {
         shared_ptr<Node<T>> p;
         shared_ptr<Node<T>> pred;
@@ -109,11 +115,25 @@ private:
             *l = p->Next;
         }
         else {
+            //remove o elemento substituindo o endereço do predecessor com o endereço do sucessor do elemento.
             pred->Next = (*x)->Next;
         }
-        (*x).reset();
-        //free(*x);
+        //libera a memória usada pelo pointeiro deletado.
+        (*x).reset();        
     }    
+    void VisualizeCollection() {
+        T* arr = new T[length];
+        shared_ptr<Node<T>> it = tail;
+        for (size_t i = 0; i < length; ++i) {
+            arr[i] = it->Item;
+            it = it->Next;
+        }
+        for (size_t i = 0; i < length; ++i) {
+            std::cout << arr[i] << ", ";
+        }
+        std::cout << std::endl;
+        free(arr);
+    }
 public:
     LinkedList(){        
         tail = nullptr;   
@@ -126,10 +146,7 @@ public:
         length = 0;
         for (auto it = initList.begin(); it != initList.end(); ++it) {
             InsertAtStart(*it);
-        }
-        /*for (int i = 0; i < initialList.size(); ++i) {
-            
-        }*/
+        }        
     }
     ~LinkedList(){
     }
@@ -157,17 +174,41 @@ public:
         return true;
     }
     void BubbleSortWithRawPointers() {
-
+        //TODO:
+        if(tail == nullptr)
+            return;
+        Node<T>* pointer = NULL;
+        Node<T>* first = tail.get();
+        pointer = tail->Next.get();
+        while (pointer != NULL)
+        {
+            Node<T>* p = first;
+            Node<T>* c = pointer;
+            while (p != NULL)
+            {
+                if(p->Item > c->Item){
+                    auto temp = c->Item;
+                    c->Item = p->Item;
+                    p->Item = temp;
+                }
+                p = p->Next.get();
+            }
+            pointer = pointer->Next.get();
+        }
+                
     }
     void BubbleSort() {
         if (tail == nullptr)
             return;
         shared_ptr<Node<T>> pointer = tail->Next;
-        shared_ptr<Node<T>> first = tail;
+        shared_ptr<Node<T>> first = tail;        
+        int contagem = 0;
         while (pointer != nullptr)
         {
             shared_ptr<Node<T>> p = first;
             shared_ptr<Node<T>> c = pointer;
+            std::cout << "Rodada: " << contagem << "\n Antes" << std::endl;
+            VisualizeCollection();
             while (p != nullptr)
             {
                 if (p->Item > c->Item) {
@@ -177,15 +218,15 @@ public:
                 }
                 p = p->Next;                
             }
-            pointer = pointer->Next;            
+            std::cout << " Depois " << std::endl;
+            VisualizeCollection();
+            pointer = pointer->Next;     
+            contagem++;
         }
     }
     Iterator<T> GetIteratorFromTail() {
         return Iterator<T>(this->tail);
-    }
-    Iterator<T> GetIteratorFromHead() {
-        return Iterator<T>(this->head);
-    }
+    }    
     int Size() {
         return this->length;
     }
@@ -200,13 +241,7 @@ void Sort(LinkedList<T>& list) {
     std::array<T, 6> arr;
     optional<T> next = current.GetCurrent();
     while (pointerOpt.has_value())
-    {           
-        auto it = list.GetIteratorFromTail();
-        for (size_t i = 0; i < list.Size(); i++)
-        {            
-            arr[i] = it.GetCurrent().value();
-            it.Next();
-        }
+    {                   
         while (next.has_value())
         {               
             if (pointerOpt.value() < next.value()) {                    

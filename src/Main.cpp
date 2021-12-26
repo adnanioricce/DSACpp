@@ -50,10 +50,12 @@ void TestLinkedQueue() {
 	LinkedQueue<int> queue;
 	Menu(queue);
 }
+
 int main(){
-	TestQueue();
+	//ExemploBubbleSort();
+	/*TestQueue();
 	TestStack();
 	TestList();
-	TestLinkedQueue();
+	TestLinkedQueue();*/
 	return 0;
 }      

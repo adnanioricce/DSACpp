@@ -12,7 +12,7 @@ private:
 	{
 		T Data;
 		Node *Next;
-	} *head = NULL, * tail = NULL, * pointer = NULL;
+	} *head = NULL, *tail = NULL, *pointer = NULL;
 	int count = 0;	
 public:
 	LinkedQueue()

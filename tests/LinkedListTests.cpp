@@ -50,16 +50,16 @@ TEST_SUITE("Linked list test") {
     }
     TEST_CASE("Test list sorting") {
         // Entrada
-        auto testList = std::array<int, 6>(
+        auto testList = std::initializer_list(
             { 7,2,9,6,1,3 }
         );
         //Saida esperada
         auto expectedList = std::array<int, 6>(
             { 1,2,3,6,7,9 }
         );        
-        LinkedList<int> list({ 7,2,9,6,1,3 });        
+        LinkedList<int> list(testList);        
         list.BubbleSort();
-        auto resultList = std::array<int, 6>();        
+        auto resultList = std::array<int, 6>();
         //Sort(list);
         auto iterator = list.GetIteratorFromTail();                      
         for (int i = 0; i < 6; i++)
@@ -79,6 +79,11 @@ TEST_SUITE("Linked list test") {
     TEST_CASE("Test sorting on empty list") {        
         LinkedList<int> list;
         list.BubbleSort();
+    }
+    TEST_CASE("Test sorting with one element") {
+        LinkedList<int> list;
+        list.InsertAtStart(5);
+        list.BubbleSortWithRawPointers();
     }
     //TEST_CASE("Test sorting with external function") {
     //    auto expectedList = std::array<int, 6>(
