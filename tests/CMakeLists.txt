@@ -11,7 +11,12 @@ include_directories(
 )
 # Dependencies
 # Gather the header and source files
-set(UNIT_TESTS_SRC_FILES LinkedListTests.cpp QueueTests.cpp StackTests.cpp Main.cpp)
+set(UNIT_TESTS_SRC_FILES 
+    LinkedListTests.cpp 
+    QueueTests.cpp 
+    StackTests.cpp 
+    BinaryTreeTests.cpp
+    Main.cpp)
 
 # Include paths
 set(UNIT_TESTS_INCLUDES ${PROJECT_INCLUDE_DIR}

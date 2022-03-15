@@ -1,0 +1,9 @@
+E:/GitRepo/Basics/DSACpp/CMakeFiles/DataStructures.dir
+E:/GitRepo/Basics/DSACpp/CMakeFiles/INSTALL.dir
+E:/GitRepo/Basics/DSACpp/CMakeFiles/ALL_BUILD.dir
+E:/GitRepo/Basics/DSACpp/CMakeFiles/ZERO_CHECK.dir
+E:/GitRepo/Basics/DSACpp/tests/CMakeFiles/DataStructures_unit_tests.dir
+E:/GitRepo/Basics/DSACpp/tests/CMakeFiles/INSTALL.dir
+E:/GitRepo/Basics/DSACpp/libs/doctest/CMakeFiles/doctest_with_main.dir
+E:/GitRepo/Basics/DSACpp/libs/doctest/CMakeFiles/INSTALL.dir
+E:/GitRepo/Basics/DSACpp/libs/doctest/CMakeFiles/ALL_BUILD.dir

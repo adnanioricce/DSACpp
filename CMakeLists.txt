@@ -26,6 +26,7 @@ set(SOURCE_FILES src/Main.cpp
     src/Share/LinkedStack.h
     src/Share/LinkedQueue.h
     src/Share/Queue.h 
-    src/Share/Stack.h)
+    src/Share/Stack.h 
+    src/Share/BinaryTree.h)
 add_executable(DataStructures ${SOURCE_FILES})
 target_link_libraries(DataStructures ${Boost_LIBRARIES})

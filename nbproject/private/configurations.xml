@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <df name="bin">
+      </df>
+      <df name="CMakeFiles">
+        <df name="3.20.4">
+          <df name="CompilerIdC">
+            <df name="Debug">
+              <df name="CompilerIdC.tlog">
+              </df>
+            </df>
+            <df name="tmp">
+            </df>
+            <in>CMakeCCompilerId.c</in>
+          </df>
+          <df name="CompilerIdCXX">
+            <df name="Debug">
+              <df name="CompilerIdCXX.tlog">
+              </df>
+            </df>
+            <df name="tmp">
+            </df>
+            <in>CMakeCXXCompilerId.cpp</in>
+          </df>
+          <df name="x64">
+            <df name="Debug">
+              <df name="VCTargetsPath.tlog">
+              </df>
+            </df>
+          </df>
+        </df>
+        <df name="81e1014d7053f30f5b805c13b6b63ee7">
+        </df>
+        <df name="895576cd182574d77fc4108beb4ae3e9">
+        </df>
+        <df name="c1da35c88a22235ab45ff02bf3cac801">
+        </df>
+        <df name="CMakeTmp">
+        </df>
+        <df name="Progress">
+        </df>
+      </df>
+      <df name="libs">
+        <df name="doctest">
+          <df name=".github">
+            <df name="workflows">
+            </df>
+          </df>
+          <df name="CMakeFiles">
+            <df name="doctest_with_main.dir">
+              <df name="doctest">
+                <df name="parts">
+                </df>
+              </df>
+            </df>
+            <df name="Export">
+              <df name="lib">
+                <df name="cmake">
+                  <df name="doctest">
+                  </df>
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="doc">
+            <df name="html_generated">
+              <df name="strapdown.js">
+                <df name="themes">
+                </df>
+              </df>
+            </df>
+            <df name="markdown">
+            </df>
+          </df>
+          <df name="doctest">
+            <df name="extensions">
+              <in>doctest_mpi.h</in>
+              <in>doctest_util.h</in>
+              <in>mpi_reporter.h</in>
+            </df>
+            <df name="parts">
+              <in>doctest.cpp</in>
+              <in>doctest_fwd.h</in>
+            </df>
+            <in>doctest.h</in>
+          </df>
+          <df name="examples">
+            <df name="all_features">
+              <df name="test_output">
+              </df>
+              <in>alternative_macros.cpp</in>
+              <in>assertion_macros.cpp</in>
+              <in>asserts_used_outside_of_tests.cpp</in>
+              <in>concurrency.cpp</in>
+              <in>doctest_proxy.h</in>
+              <in>enums.cpp</in>
+              <in>header.h</in>
+              <in>logging.cpp</in>
+              <in>main.cpp</in>
+              <in>namespace1.cpp</in>
+              <in>namespace2.cpp</in>
+              <in>namespace3.cpp</in>
+              <in>namespace4.cpp</in>
+              <in>namespace5.cpp</in>
+              <in>namespace6.cpp</in>
+              <in>namespace7.cpp</in>
+              <in>namespace8.cpp</in>
+              <in>namespace9.cpp</in>
+              <in>reporters_and_listeners.cpp</in>
+              <in>stringification.cpp</in>
+              <in>subcases.cpp</in>
+              <in>templated_test_cases.cpp</in>
+              <in>test_cases_and_suites.cpp</in>
+            </df>
+            <df name="combining_the_same_tests_built_differently_in_multiple_shared_objects">
+              <df name="test_output">
+              </df>
+              <in>default.cpp</in>
+              <in>foo.h</in>
+              <in>main.cpp</in>
+              <in>return42.cpp</in>
+              <in>test_runner.cpp</in>
+            </df>
+            <df name="exe_with_static_libs">
+              <df name="test_output">
+              </df>
+              <in>lib_1_src1.cpp</in>
+              <in>lib_1_src2.cpp</in>
+              <in>lib_2_src.cpp</in>
+              <in>main.cpp</in>
+            </df>
+            <df name="executable_dll_and_plugin">
+              <df name="test_output">
+              </df>
+              <in>dll.cpp</in>
+              <in>implementation.cpp</in>
+              <in>implementation_2.cpp</in>
+              <in>main.cpp</in>
+              <in>plugin.cpp</in>
+            </df>
+            <df name="installed_doctest_cmake">
+              <df name="dll">
+                <in>dll.cpp</in>
+                <in>dll.h</in>
+                <in>exporting.h</in>
+                <in>main.cpp</in>
+              </df>
+              <df name="executable">
+                <in>main.cpp</in>
+              </df>
+            </df>
+            <df name="mpi">
+              <in>main.cpp</in>
+              <in>mpi.cpp</in>
+            </df>
+          </df>
+          <df name="generated">
+          </df>
+          <df name="scripts">
+            <df name="bench">
+            </df>
+            <df name="cmake">
+            </df>
+            <df name="data">
+              <df name="benchmarks">
+              </df>
+              <df name="logo">
+              </df>
+            </df>
+            <df name="development_only">
+              <df name="doctest">
+                <in>doctest.h</in>
+              </df>
+            </df>
+            <df name="how_stuff_works">
+              <in>how_captures_work.cpp</in>
+              <in>how_exception_translators_work.cpp</in>
+              <in>how_subcases_work.cpp</in>
+              <in>testing_crash_scenarios.cpp</in>
+            </df>
+            <df name="playground">
+              <in>main.cpp</in>
+              <in>test.cpp</in>
+            </df>
+            <in>coverage_maxout.cpp</in>
+            <in>hello_world.cpp</in>
+          </df>
+        </df>
+      </df>
+      <df name="out">
+        <df name="build">
+          <df name="UnixMakefiles">
+            <df name="CMakeFiles">
+              <df name="3.20.4">
+                <df name="CompilerIdC">
+                  <df name="tmp">
+                  </df>
+                  <in>CMakeCCompilerId.c</in>
+                </df>
+                <df name="CompilerIdCXX">
+                  <df name="tmp">
+                  </df>
+                  <in>CMakeCXXCompilerId.cpp</in>
+                </df>
+              </df>
+              <df name="CMakeTmp">
+              </df>
+              <df name="DataStructures.dir">
+                <df name="src">
+                </df>
+              </df>
+            </df>
+            <df name="libs">
+              <df name="doctest">
+                <df name="CMakeFiles">
+                  <df name="doctest_with_main.dir">
+                    <df name="doctest">
+                      <df name="parts">
+                      </df>
+                    </df>
+                  </df>
+                  <df name="Export">
+                    <df name="lib">
+                      <df name="cmake">
+                        <df name="doctest">
+                        </df>
+                      </df>
+                    </df>
+                  </df>
+                </df>
+                <df name="generated">
+                </df>
+              </df>
+            </df>
+            <df name="tests">
+              <df name="CMakeFiles">
+                <df name="DataStructures_unit_tests.dir">
+                </df>
+              </df>
+            </df>
+          </df>
+          <df name="VisualStudio2019">
+            <df name="CMakeFiles">
+              <df name="3.20.4">
+                <df name="CompilerIdC">
+                  <df name="Debug">
+                    <df name="CompilerIdC.tlog">
+                    </df>
+                  </df>
+                  <df name="tmp">
+                  </df>
+                  <in>CMakeCCompilerId.c</in>
+                </df>
+                <df name="CompilerIdCXX">
+                  <df name="Debug">
+                    <df name="CompilerIdCXX.tlog">
+                    </df>
+                  </df>
+                  <df name="tmp">
+                  </df>
+                  <in>CMakeCXXCompilerId.cpp</in>
+                </df>
+                <df name="x64">
+                  <df name="Debug">
+                    <df name="VCTargetsPath.tlog">
+                    </df>
+                  </df>
+                </df>
+              </df>
+              <df name="CMakeTmp">
+              </df>
+            </df>
+            <df name="libs">
+              <df name="doctest">
+              </df>
+            </df>
+            <df name="tests">
+              <df name="CMakeFiles">
+              </df>
+            </df>
+          </df>
+        </df>
+      </df>
+      <df name="scripts">
+      </df>
+      <df name="src">
+        <df name="Share">
+          <df name="Algorithms">
+            <in>BubbleSort.h</in>
+          </df>
+          <in>LinkedList.h</in>
+          <in>LinkedQueue.h</in>
+          <in>LinkedStack.h</in>
+          <in>Queue.h</in>
+          <in>Stack.h</in>
+        </df>
+        <in>Main.cpp</in>
+      </df>
+      <df name="tests">
+        <df name="CMakeFiles">
+          <df name="DataStructures_unit_tests.dir">
+          </df>
+        </df>
+        <in>LinkedListTests.cpp</in>
+        <in>LinkedQueueTests.cpp</in>
+        <in>LinkedStackTests.cpp</in>
+        <in>Main.cpp</in>
+        <in>QueueTests.cpp</in>
+        <in>StackTests.cpp</in>
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>3</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir>E:\GitRepo\Basics\DSACpp\bin\</rundir>
+        <buildfirst>true</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>
