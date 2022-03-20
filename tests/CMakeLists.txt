@@ -13,9 +13,11 @@ include_directories(
 # Gather the header and source files
 set(UNIT_TESTS_SRC_FILES 
     LinkedListTests.cpp 
+    DoublyLinkedListTests.cpp
     QueueTests.cpp 
     StackTests.cpp 
     BinaryTreeTests.cpp
+    HashTableTests.cpp
     Main.cpp)
 
 # Include paths

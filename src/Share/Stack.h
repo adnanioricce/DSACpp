@@ -48,32 +48,4 @@ private:
 	size_t _currentIndex = 0;
 	size_t _currentSize = 0;
 };
-template<typename T>
-void Menu(Stack<T> stack) {
-  cout << "i - Push" << endl;
-  cout << "r - Pop" << endl;
-  cout << "c - Size" << endl;
-  cout << "s - Stop" << endl;
-  char opcao;
-  cin >> opcao;  
-  while(true){
-	if (opcao == 'i') {
-		cout << "Insert a value " << endl;
-		T value;
-		cin >> value;
-		stack.Push(value);
-		cout << "Inserted value: " << value << endl;
-	}
-	if (opcao == 'r') {
-		cout << "Removed Item: " << stack.Pop() << endl;
-	}
-	if(opcao == 'c'){
-		cout << "Count number of elements " << stack.Size() << endl;
-	}
-	if (opcao == 's') {		
-		cout << "Stopping stack menu ..." << endl;
-		return;
-	}
-  }
-}
 #endif // !STACK_H

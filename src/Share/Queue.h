@@ -53,33 +53,4 @@ public:
 	}
 	
 };
-//TODO:isso vai falhar pra uma struct, trata isso ou não?
-template<typename T>
-void Menu(const Queue<T> &queue) {
-	cout << "i - Enqueue" << endl;
-	cout << "r - Dequeue" << endl;
-	cout << "c - Size" << endl;
-	cout << "s - Stop" << endl;
-	char opcao;
-	cin >> opcao;	
-	while (true) {
-		if (opcao == 'i') {		
-			cout << "Insert a item: " << endl;
-			T value;
-			cin >> value;
-			queue.Enqueue(value);
-			cout << "Inserted value: " << value << endl;
-		}
-		if (opcao == 'r') {
-			cout << "Removed Item: " << queue.Dequeue() << endl;			
-		}
-		if (opcao == 'c') {
-			cout << "Size: " << queue.Size() << endl;			
-		}
-		if (opcao == 's') {
-			cout << "Stopping Queue menu ..." << endl;
-			return;
-		}
-	}	
-}
 #endif

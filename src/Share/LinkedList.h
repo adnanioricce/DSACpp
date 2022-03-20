@@ -117,35 +117,7 @@ public:
         DeleteNode(&head, &node);
         length--;
         return true;
-    }
-    // somente demonstração,
-    // ambos os métodos funcionam, mas minha preferencia é pelo uso de smart pointers
-
-    void BubbleSortWithRawPointers() {
-        //TODO:
-        if(head == nullptr)
-            return;
-        Node<T>* pointer = NULL;
-        Node<T>* first = head.get();
-        pointer = head->Next.get();
-        while (pointer != NULL)
-        {
-            Node<T>* p = first;
-            Node<T>* c = pointer;
-            while (p != NULL)
-            {
-                if(p->Item > c->Item){
-                    auto temp = c->Item;
-                    c->Item = p->Item;
-                    p->Item = temp;
-                }
-                p = p->Next.get();
-            }
-            pointer = pointer->Next.get();
-        }
-                
-    }   
-    
+    }        
     /*
     * Sort the list with bubble sort algorithm
     */
@@ -184,63 +156,4 @@ public:
         return this->length;
     }
 };
-template<typename T>
-void printList(LinkedList<T> list) {
-    shared_ptr<Node<T>> head = list.GetHead();
-    while (head != nullptr)
-    {
-        std::cout << head->Item << (head->Next == nullptr ? "" : " ,");
-        head = head->Next;
-    }
-    std::cout << std::endl;
-}
-template<typename T>
-void Menu(LinkedList<T> list) {
-    bool _continue = true;
-    while (_continue)
-    {
-        std::cout << "i - Insert" << std::endl;
-        std::cout << "b - Search" << std::endl;
-        std::cout << "d - Delete" << std::endl;
-        std::cout << "l - List" << std::endl;
-        std::cout << "s - Sort" << std::endl;
-        std::cout << "e - Leave" << std::endl;
-        char opcao;
-        std::cin >> opcao;
-        if (opcao == 'i') {
-            T value;
-            std::cout << "Enter a value: ";
-            std::cin >> value;
-            list.Insert(value);    
-            std::cout << "Inserted Value:" << value << std::endl;
-        }
-        else if (opcao == 'd') {
-            T value;
-            std::cin >> value;
-            std::cout << "Removed Item: " << list.Delete(value) << std::endl;            
-        }
-        else if (opcao == 'b') {
-            T value;
-            std::cin >> value;
-            std::optional<T> searchedItem = list.Search(value);
-            if (!searchedItem.has_value())
-            {
-                std::cout << "Given value " << value << "doesn't exists in the list" << std::endl;
-            }
-            else {                
-                std::cout << "Searched Item: " << searchedItem.value() << std::endl;
-            }
-        }
-        else if (opcao == 'l') {
-            printList(list);
-        }
-        else if (opcao == 's') {
-            list.BubbleSort();
-            printList(list);
-        }
-        else if (opcao == 'e') {
-            _continue = false;
-        }
-    }
-}
 #endif
