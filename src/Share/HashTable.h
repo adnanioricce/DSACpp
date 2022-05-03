@@ -8,7 +8,7 @@
 //TODO: Move to a hash namespace
 unsigned int hashCode(std::string key) {
 	unsigned long hash = 5381;
-	for each (auto ch in key)
+	for(auto ch : key)
 	{
 		//hash * 33  + c
 		hash = ((hash << 5) + hash) + ch;

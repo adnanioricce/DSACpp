@@ -13,7 +13,7 @@ public:
 	void PrependNode(T data);
 	void AppendNode(T data);
 	std::optional<T> Search(T data);
-	void DeleteNode(T data);
+	void DeleteNode(T data);	
 private:	
 	struct DoubleNode
 	{
@@ -108,7 +108,5 @@ std::optional<T> DoublyLinkedList<T>::Search(T data) {
 	}
 	return std::nullopt;
 }
-
-
 
 #endif // !DOUBLELINKEDLIST_H

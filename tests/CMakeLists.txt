@@ -19,6 +19,7 @@ set(UNIT_TESTS_SRC_FILES
     BinaryTreeTests.cpp
     HashTableTests.cpp
     RBTreeTests.cpp
+    HeapTests.cpp
     Main.cpp)
 
 # Include paths
